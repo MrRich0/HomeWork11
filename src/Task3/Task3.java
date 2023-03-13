@@ -7,13 +7,13 @@ import java.util.stream.Stream;
 
 public class Task3 {
     public static void main(String[] args) {
-        List<String> input = Arrays.asList("7, 2, 0", "4, 5");
+        List<String> input = Arrays.asList("7, 2, 0", "4, 5", "3, 11", "22");
         System.out.println(sortedNumbers(input));
     }
     public static String sortedNumbers(List<String> numbers){
         return numbers.stream()
                 .flatMap(number -> Stream.of(number.split(", ")))
-                .sorted()
+                .sorted((a, b) -> Integer.compare(a.hashCode(), b.hashCode()))
                 .collect(Collectors.joining(", "));
     }
 }
